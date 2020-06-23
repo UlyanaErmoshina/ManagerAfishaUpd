@@ -30,17 +30,32 @@ class AfishaManagerTest {
        manager.add(third);
 
     }
+
     @Test
     void ShouldAdd(){
-        Movies first = new Movies(1, 1, "first", 1, 1);
-        Movies second = new Movies(2, 2, "second", 1, 1);
-        Movies third = new Movies(3, 3, "third", 1, 1);
-        manager.add();
+        manager.add(first);
         Movies[] actual = manager.getAll();
-        Movies[] expected =
+        Movies expected = first;
+        assertEquals(expected, actual);
 
     }
+
     @Test
+    void ShouldGetAll(){
+        manager.getAll();
+        Movies[] actual = manager.getAll();
+        Movies expected[] = new Movies[]{first,second,third};
+        assertArrayEquals(expected, actual);
+
+    }
+    }
+
+
+
+
+
+
+
 
 
 
