@@ -23,14 +23,7 @@ public class AfishaRepository {
     }
 
     public Movies[] findAll() {
-        Movies[] result = new Movies[items.length];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратном
-        for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
-        }
-        return result;
+        return items;
     }
 
     public Movies findById(int id) {
@@ -54,13 +47,15 @@ public class AfishaRepository {
                 tmp[index] = item;
                 index++;
             }
+        }
+    }
 
 
             public void removeAll() {
-                    items = new Movies[0];
+                    Movies[] tmp = new Movies[0];
+                    items = tmp;
 
             }
         }
-    }
-}
+
 

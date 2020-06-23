@@ -61,7 +61,7 @@ class AfishaRepositoryTest {
         Movies actual = repository.findById(2);
         Movies expected = second;
 
-        assertArrayEquals(expected, actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -89,17 +89,6 @@ class AfishaRepositoryTest {
         Movies third = new Movies(3, 3, "third", 1, 1);
 
         repository.removeAll();
-        Movies[] actual = repository.removeAll();
-        Movies[] expected = new Movies[0];
-
-        assertArrayEquals(expected, actual);
 
         }
-
     }
-
-
-
-
-
-}
