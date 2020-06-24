@@ -27,7 +27,7 @@ public class AfishaRepository {
     }
 
     public Movies findById(int id) {
-        Movies temp = null;
+        Movies temp=null;
         for (Movies item : items) {
             if (item.getId() == id) {
                 temp = item;
