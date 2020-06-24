@@ -1,74 +1,30 @@
 package ru.netology.manager;
 
 import ru.netology.domain.Movies;
+import ru.netology.AfishaRepository;
 
 public class AfishaManager {
-
-  private Movies[] movies = new Movies[0];
-  private int CustomQuantityMovies;
-  private static int DefaultQuantityMovies = 10;
-
-  public AfishaManager(int customQuantityMovies) {
-
-    CustomQuantityMovies = customQuantityMovies;
+  public AfishaManager(AfishaRepository repository) {
+    this.repository = repository;
   }
 
-  public AfishaManager() {
-  }
-
+  private AfishaRepository repository;
 
   public void add(Movies item) {
-    // создаём новый массив размером на единицу больше
-    int length = movies.length + 1;
-    Movies[] tmp = new Movies[length];
-    // itar + tab
-    // копируем поэлементно
-    // for (int i = 0; i < items.length; i++) {
-    //   tmp[i] = items[i];
-    // }
-    System.arraycopy(movies, 0, tmp, 0, movies.length);
-    // кладём последним наш элемент
-    int lastIndex = tmp.length - 1;
-    tmp[lastIndex] = item;
-    movies = tmp;
+    repository.save(item);
   }
-
 
 
   public Movies[] getAll() {
-    Movies[] result = new Movies[movies.length];
-    int lengths;
-    if (movies.length<CustomQuantityMovies)
-      lengths= movies.length;
-    else
-
-    if (this.CustomQuantityMovies < DefaultQuantityMovies)
-      lengths = this.CustomQuantityMovies;
-    else
-
-      lengths = DefaultQuantityMovies;
-
+    Movies[] items = repository.findAll();
+    Movies[] result = new Movies[items.length];
     // перебираем массив в прямом порядке
     // но кладём в результаты в обратном
-    for (int i = 0; i < lengths; i++) {
-      int index = movies.length - i - 1;
-      result[i] = movies[index];
+    for (int i = 0; i < result.length; i++) {
+      int index = items.length - i - 1;
+      result[i] = items[index];
     }
     return result;
   }
 
-  // наивная реализация
-  public void removeById(int id) {
-    int length = movies.length - 1;
-    Movies[] tmp = new Movies[length];
-    int index = 0;
-    for (Movies item : movies) {
-      if (item.getId() != id) {
-        tmp[index] = item;
-        index++;
-      }
-    }
-    // меняем наши элементы
-    movies = tmp;
-  }
 }
