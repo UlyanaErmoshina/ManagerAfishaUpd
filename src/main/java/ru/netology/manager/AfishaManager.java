@@ -1,10 +1,10 @@
 package ru.netology.manager;
 
-import ru.netology.domain.Movies;
+import ru.netology.domain.Movie;
 
 public class AfishaManager {
 
-  private Movies[] movies = new Movies[0];
+  private Movie[] movies = new Movie[0];
   private int CustomQuantityMovies;
   private static int DefaultQuantityMovies = 10;
 
@@ -17,17 +17,10 @@ public class AfishaManager {
   }
 
 
-  public void add(Movies item) {
-    // создаём новый массив размером на единицу больше
+  public void add(Movie item) {
     int length = movies.length + 1;
-    Movies[] tmp = new Movies[length];
-    // itar + tab
-    // копируем поэлементно
-    // for (int i = 0; i < items.length; i++) {
-    //   tmp[i] = items[i];
-    // }
+    Movie[] tmp = new Movie[length];
     System.arraycopy(movies, 0, tmp, 0, movies.length);
-    // кладём последним наш элемент
     int lastIndex = tmp.length - 1;
     tmp[lastIndex] = item;
     movies = tmp;
@@ -35,21 +28,19 @@ public class AfishaManager {
 
 
 
-  public Movies[] getAll() {
-    Movies[] result = new Movies[movies.length];
+  public Movie[] getAll() {
     int lengths;
-    if (movies.length<CustomQuantityMovies)
-      lengths= movies.length;
-    else
 
-    if (this.CustomQuantityMovies < DefaultQuantityMovies)
-      lengths = this.CustomQuantityMovies;
-    else
+    lengths = Math.min (Math.min(movies.length, CustomQuantityMovies), DefaultQuantityMovies);
 
-      lengths = DefaultQuantityMovies;
-
-    // перебираем массив в прямом порядке
-    // но кладём в результаты в обратном
+//    if (movies.length<CustomQuantityMovies)
+//      lengths= movies.length;
+//    else
+//    if (CustomQuantityMovies < DefaultQuantityMovies)
+//      lengths = CustomQuantityMovies;
+//    else
+//      lengths = DefaultQuantityMovies;
+    Movie[] result = new Movie[lengths];
     for (int i = 0; i < lengths; i++) {
       int index = movies.length - i - 1;
       result[i] = movies[index];
@@ -57,18 +48,17 @@ public class AfishaManager {
     return result;
   }
 
-  // наивная реализация
   public void removeById(int id) {
     int length = movies.length - 1;
-    Movies[] tmp = new Movies[length];
+    Movie[] tmp = new Movie[length];
     int index = 0;
-    for (Movies item : movies) {
+    for (Movie item : movies) {
       if (item.getId() != id) {
         tmp[index] = item;
         index++;
       }
     }
-    // меняем наши элементы
+
     movies = tmp;
   }
 }

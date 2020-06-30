@@ -1,8 +1,7 @@
 package ru.netology.manager;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.Movies;
-import ru.netology.manager.AfishaManager;
+import ru.netology.domain.Movie;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -11,17 +10,17 @@ public class CartManagerTestNonEmpty {
   public void shouldRemoveIfExists() {
     AfishaManager manager = new AfishaManager(5);
     int idToRemove = 1;
-    Movies first = new Movies(1, 1, "first", 1, 1);
-    Movies second = new Movies(2, 2, "second", 1, 1);
-    Movies third = new Movies(3, 3, "third", 1, 1);
+    Movie first = new Movie(1,  "first", "thriller", "picture");
+    Movie second = new Movie(2,  "second", "cartoon", "picture");
+    Movie third = new Movie(3, "third", "comedy", "picture");
     manager.add(first);
     manager.add(second);
     manager.add(third);
 
     manager.removeById(idToRemove);
 
-    Movies[] actual = manager.getAll();
-    Movies[] expected = new Movies[]{third, second};
+    Movie[] actual = manager.getAll();
+    Movie[] expected = new Movie[]{third, second};
 
 //    assertEquals(expected, actual);
     assertArrayEquals(expected, actual);
@@ -31,17 +30,17 @@ public class CartManagerTestNonEmpty {
   public void shouldNotRemoveIfNotExists() {
     AfishaManager manager = new AfishaManager();
     int idToRemove = 4;
-    Movies first = new Movies(1, 1, "first", 1, 1);
-    Movies second = new Movies(2, 2, "second", 1, 1);
-    Movies third = new Movies(3, 3, "third", 1, 1);
+    Movie first = new Movie(1, "first", "thriller", "picture");
+    Movie second = new Movie(2, "second", "cartoon", "picture");
+    Movie third = new Movie(3, "third", "comedy", "picture");
     manager.add(first);
     manager.add(second);
     manager.add(third);
 
     manager.removeById(idToRemove);
 
-    Movies[] actual = manager.getAll();
-    Movies[] expected = new Movies[]{third, second, first};
+    Movie[] actual = manager.getAll();
+    Movie[] expected = new Movie[]{third, second, first};
 
     assertArrayEquals(expected, actual);
   }

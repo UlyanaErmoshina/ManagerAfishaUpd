@@ -2,16 +2,15 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.Movies;
-import ru.netology.manager.AfishaManager;
+import ru.netology.domain.Movie;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class CartManagerTestNonEmptyWithSetup {
   private AfishaManager manager = new AfishaManager();
-  private Movies first = new Movies(1, 1, "first", 1, 1);
-  private Movies second = new Movies(2, 2, "second", 1, 1);
-  private Movies third = new Movies(3, 3, "third", 1, 1);
+  private Movie first = new Movie(1, "first", "thriller", "picture");
+  private Movie second = new Movie(2, "second", "cartoon", "picture");
+  private Movie third = new Movie(3, "third", "comedy", "picture");
 
   @BeforeEach
   public void setUp() {
@@ -25,22 +24,10 @@ public class CartManagerTestNonEmptyWithSetup {
     int idToRemove = 1;
     manager.removeById(idToRemove);
 
-    Movies[] actual = manager.getAll();
-    Movies[] expected = new Movies[]{third, second};
-
-//    assertEquals(expected, actual);
-    assertArrayEquals(expected, actual);
-  }
-
-  @Test
-  public void shouldNotRemoveIfNotExists() {
-    int idToRemove = 4;
-
-    manager.removeById(idToRemove);
-
-    Movies[] actual = manager.getAll();
-    Movies[] expected = new Movies[]{third, second, first};
+    Movie[] actual = manager.getAll();
+    Movie[] expected = new Movie[]{third, second};
 
     assertArrayEquals(expected, actual);
   }
+
 }
