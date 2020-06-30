@@ -1,27 +1,27 @@
 package ru.netology;
 
-import ru.netology.domain.movie;
+import ru.netology.domain.Movie;
 
 public class AfishaRepository {
 
-    private movie[] items = new movie[0];
+    private Movie[] items = new Movie[0];
 
-    public void save(movie item) {
+    public void save(Movie item) {
         int length = items.length + 1;
-        movie[] tmp = new movie[length];
+        Movie[] tmp = new Movie[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
         items = tmp;
     }
 
-    public movie[] findAll() {
+    public Movie[] findAll() {
         return items;
     }
 
-    public movie findById(int id) {
-        movie temp=null;
-        for (movie item : items) {
+    public Movie findById(int id) {
+        Movie temp=null;
+        for (Movie item : items) {
             if (item.getId() == id) {
                 temp = item;
 
@@ -33,9 +33,9 @@ public class AfishaRepository {
 
     public void removeById(int id) {
         int length = items.length - 1;
-        movie[] tmp = new movie[length];
+        Movie[] tmp = new Movie[length];
         int index = 0;
-        for (movie item : items) {
+        for (Movie item : items) {
             if (item.getId() != id) {
                 tmp[index] = item;
                 index++;
@@ -45,7 +45,7 @@ public class AfishaRepository {
 
 
             public void removeAll() {
-                    movie[] tmp = new movie[0];
+                    Movie[] tmp = new Movie[0];
                     items = tmp;
 
             }
