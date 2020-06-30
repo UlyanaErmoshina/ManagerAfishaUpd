@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.AfishaRepository;
-import ru.netology.domain.Movies;
+import ru.netology.domain.movie;
 import ru.netology.manager.AfishaManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,10 +20,10 @@ class AfishaManagerTest {
     AfishaRepository repository;
     @InjectMocks
     AfishaManager manager;
-    Movies first = new Movies(1, 1, "first", 1, 1);
-    Movies second = new Movies(2, 2, "second", 1, 1);
-    Movies third = new Movies(3, 3, "third", 1, 1);
-    Movies forth = new Movies(4, 4, "forth", 1, 2);
+    movie first = new movie(1, "first", "thriller", "picture");
+    movie second = new movie(2, "second", "cartoon", "picture");
+    movie third = new movie(3, "third", "comedy", "picture");
+    movie forth = new movie(4, "forth", "thriller", "picture");
 
     @BeforeEach
     public void SetUp() {
@@ -36,12 +35,12 @@ class AfishaManagerTest {
 
     @Test
     void ShouldAdd() {
-        Movies[] returned = new Movies[]{first, second, third, forth};
+        movie[] returned = new movie[]{first, second, third, forth};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).save(forth);
         manager.add(forth);
-        Movies[] actual = manager.getAll();
-        Movies[] expected = new Movies[]{forth, third, second, first};
+        movie[] actual = manager.getAll();
+        movie[] expected = new movie[]{forth, third, second, first};
         assertArrayEquals(expected, actual);
 
         verify(repository).save(forth);
@@ -50,10 +49,10 @@ class AfishaManagerTest {
 
     @Test
     void ShouldGetAll() {
-        Movies[] returned = new Movies[]{first, second, third};
+        movie[] returned = new movie[]{first, second, third};
         doReturn(returned).when(repository).findAll();
-        Movies[] actual = manager.getAll();
-        Movies[] expected = new Movies[]{third, second, first};
+        movie[] actual = manager.getAll();
+        movie[] expected = new movie[]{third, second, first};
         assertArrayEquals(expected, actual);
 
         verify(repository).findAll();
