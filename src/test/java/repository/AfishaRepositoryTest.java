@@ -1,41 +1,38 @@
 package repository;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.AfishaRepository;
+import ru.netology.repository.AfishaRepository;
 import ru.netology.domain.Movie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AfishaRepositoryTest {
     private AfishaRepository repository = new AfishaRepository();
+    Movie first = new Movie(1, "first", "thriller", "picture");
+    Movie second = new Movie(2, "second", "cartoon", "picture");
+    Movie third = new Movie(3, "third", "comedy", "picture");
 
 
     @Test
     void ShouldSave() {
-        Movie first = new Movie(1, "first", "thriller", "picture");
-        repository.save(first);
-        Movie second = new Movie(2, "second", "cartoon", "picture");
-        Movie third = new Movie(3, "third", "comedy", "picture");
-
         repository.save(first);
         repository.save(second);
         repository.save(third);
 
 
         Movie[] actual = repository.findAll();
-        Movie[] expected = new Movie[]{third, second, first};
+        Movie[] expected = new Movie[]{first, second, third};
 
         assertArrayEquals(expected, actual);
-
 
     }
 
     @Test
     void ShouldFindAll() {
-        Movie first = new Movie(1, "first", "thriller", "picture");
-        Movie second = new Movie(2, "second", "cartoon", "picture");
-        Movie third = new Movie(3, "third", "comedy", "picture");
-        repository.findAll();
+
+        repository.save(first);
+        repository.save(second);
+        repository.save(third);
         Movie[] actual = repository.findAll();
         Movie[] expected = new Movie[]{first,second,third};
 
@@ -46,10 +43,6 @@ class AfishaRepositoryTest {
     @Test
 
     void ShouldFindById() {
-        Movie first = new Movie(1, "first", "thriller", "picture");
-        repository.save(first);
-        Movie second = new Movie(2, "second", "cartoon", "picture");
-        Movie third = new Movie(3, "third", "comedy", "picture");
 
         repository.save(first);
         repository.save(second);
@@ -68,10 +61,6 @@ class AfishaRepositoryTest {
     @Test
 
     void ShouldRemoveById(){
-        Movie first = new Movie(1, "first", "thriller", "picture");
-        repository.save(first);
-        Movie second = new Movie(2, "second", "cartoon", "picture");
-        Movie third = new Movie(3, "third", "comedy", "picture");
 
         repository.save(first);
         repository.save(second);
@@ -84,9 +73,6 @@ class AfishaRepositoryTest {
     @Test
 
     void ShouldRemoveAll(){
-        Movie first = new Movie(1, "first", "thriller", "picture");
-        Movie second = new Movie(2, "second", "cartoon", "picture");
-        Movie third = new Movie(3, "third", "comedy", "picture");
 
         repository.removeAll();
 

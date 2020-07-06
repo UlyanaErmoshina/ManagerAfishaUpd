@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.netology.AfishaRepository;
+import ru.netology.repository.AfishaRepository;
 import ru.netology.domain.Movie;
 import ru.netology.manager.AfishaManager;
 
@@ -47,18 +47,6 @@ class AfishaManagerTest {
 
     }
 
-    @Test
-    void ShouldGet2() {
-        Movie[] returned = new Movie[]{first, second, third};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).save(forth);
-        Movie[] actual = manager.getAll();
-        Movie[] expected = new Movie[]{third, second};
-        assertArrayEquals(expected, actual);
-
-        verify(repository).findAll();
-
-    }
 
     @Test
     void ShouldGetAll() {
