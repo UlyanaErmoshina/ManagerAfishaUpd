@@ -20,7 +20,6 @@ public class CartManagerTestNonEmpty {
   }
   @Test
   public void shouldRemoveIfExists() {
-    AfishaManager manager = new AfishaManager(5);
     int idToRemove = 1;
 
     manager.removeById(idToRemove);
@@ -33,13 +32,23 @@ public class CartManagerTestNonEmpty {
 
   @Test
   public void shouldNotRemoveIfNotExists() {
-    AfishaManager manager = new AfishaManager();
     int idToRemove = 3;
 
     manager.removeById(idToRemove);
 
     Movie[] actual = manager.getAll();
-    Movie[] expected = new Movie[]{third, second, first};
+    Movie[] expected = new Movie[]{second, first};
+
+    assertArrayEquals(expected, actual);
+  }
+  @Test
+  public void shouldNotRemoveIfNotExists2() {
+    int idToRemove = 2;
+
+    manager.removeById(idToRemove);
+
+    Movie[] actual = manager.getAll();
+    Movie[] expected = new Movie[]{first,third};
 
     assertArrayEquals(expected, actual);
   }
