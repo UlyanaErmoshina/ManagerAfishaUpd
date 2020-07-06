@@ -36,7 +36,7 @@ public class AfishaManager {
             else
                 lengths = DefaultQuantityMovies;
         else
-            lengths = Math.min(Math.min(movies.length, CustomQuantityMovies), DefaultQuantityMovies);
+            lengths = Math.min(movies.length, CustomQuantityMovies);
 
         Movie[] result = new Movie[lengths];
         for (int i = 0; i < lengths; i++) {
