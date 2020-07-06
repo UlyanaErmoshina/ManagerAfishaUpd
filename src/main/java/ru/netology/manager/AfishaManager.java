@@ -30,8 +30,6 @@ public class AfishaManager {
 
     public Movie[] getAll() {
         int lengths;
-
-//    lengths = Math.min (Math.min(movies.length, CustomQuantityMovies), DefaultQuantityMovies);
         if (CustomQuantityMovies == 0)
             if (movies.length < DefaultQuantityMovies)
                 lengths = movies.length;
@@ -40,13 +38,6 @@ public class AfishaManager {
         else
             lengths = Math.min(Math.min(movies.length, CustomQuantityMovies), DefaultQuantityMovies);
 
-
-//        if (movies.length < CustomQuantityMovies && CustomQuantityMovies != 0)
-//            lengths = movies.length;
-//        else if (CustomQuantityMovies < DefaultQuantityMovies)
-//            lengths = CustomQuantityMovies;
-//        else
-//            lengths = DefaultQuantityMovies;
         Movie[] result = new Movie[lengths];
         for (int i = 0; i < lengths; i++) {
             int index = movies.length - i - 1;
