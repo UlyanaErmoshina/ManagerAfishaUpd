@@ -11,6 +11,7 @@ public class CartManagerTestNonEmpty {
   private Movie first = new Movie(1, "first", "thriller", "picture");
   private Movie second = new Movie(2, "second", "cartoon", "picture");
   private Movie third = new Movie(3, "third", "comedy", "picture");
+  private Movie fourth = new Movie(4, "fourth", "comedy", "picture");
 
   @BeforeEach
   public void setUp() {
@@ -42,14 +43,23 @@ public class CartManagerTestNonEmpty {
     assertArrayEquals(expected, actual);
   }
   @Test
-  public void shouldNotRemoveIfNotExists2() {
-    int idToRemove = 2;
+  public void shouldGetAll() {
+    Movie[] returned = new Movie[]{first, second, third};
 
-    manager.removeById(idToRemove);
+    manager.getAll();
 
     Movie[] actual = manager.getAll();
-    Movie[] expected = new Movie[]{first,third};
+    Movie[] expected = new Movie[]{third, second, first};
 
     assertArrayEquals(expected, actual);
+  }
+  @Test
+  void ShouldAdd() {
+    Movie[] returned = new Movie[]{first, second, third,fourth};
+    manager.add(fourth);
+    Movie[] actual = manager.getAll();
+    Movie[] expected = new Movie[]{fourth,third, second, first};
+    assertArrayEquals(expected, actual);
+
   }
 }
