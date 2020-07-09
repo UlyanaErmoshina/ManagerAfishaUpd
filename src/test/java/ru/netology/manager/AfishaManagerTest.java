@@ -6,7 +6,7 @@ import ru.netology.domain.Movie;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class CartManagerTestNonEmpty {
+public class AfishaManagerTest {
   private AfishaManager manager = new AfishaManager();
   private Movie first = new Movie(1, "first", "thriller", "picture");
   private Movie second = new Movie(2, "second", "cartoon", "picture");
@@ -19,6 +19,7 @@ public class CartManagerTestNonEmpty {
     manager.add(second);
     manager.add(third);
   }
+
   @Test
   public void shouldRemoveIfExists() {
     int idToRemove = 1;
@@ -42,6 +43,7 @@ public class CartManagerTestNonEmpty {
 
     assertArrayEquals(expected, actual);
   }
+
   @Test
   public void shouldGetAll() {
     Movie[] returned = new Movie[]{first, second, third};
@@ -53,8 +55,9 @@ public class CartManagerTestNonEmpty {
 
     assertArrayEquals(expected, actual);
   }
+
   @Test
-  void ShouldAdd() {
+  void shouldAdd() {
     Movie[] returned = new Movie[]{first, second, third,fourth};
     manager.add(fourth);
     Movie[] actual = manager.getAll();

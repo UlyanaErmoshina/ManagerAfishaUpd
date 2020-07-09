@@ -5,18 +5,17 @@ import ru.netology.domain.Movie;
 public class AfishaManager {
 
     private Movie[] movies = new Movie[0];
-    private int CustomQuantityMovies;
-    private static int DefaultQuantityMovies = 10;
+    private int customQuantityMovies;
+    private static int defaultQuantityMovies = 10;
 
     public AfishaManager(int customQuantityMovies) {
 
-        CustomQuantityMovies = customQuantityMovies;
+        this.customQuantityMovies = customQuantityMovies;
     }
 
     public AfishaManager() {
-        CustomQuantityMovies = 0;
+        customQuantityMovies = 0;
     }
-
 
     public void add(Movie item) {
         int length = movies.length + 1;
@@ -27,16 +26,15 @@ public class AfishaManager {
         movies = tmp;
     }
 
-
     public Movie[] getAll() {
         int lengths;
-        if (CustomQuantityMovies == 0)
-            if (movies.length < DefaultQuantityMovies)
+        if (customQuantityMovies == 0)
+            if (movies.length < defaultQuantityMovies)
                 lengths = movies.length;
             else
-                lengths = DefaultQuantityMovies;
+                lengths = defaultQuantityMovies;
         else
-            lengths = Math.min(movies.length, CustomQuantityMovies);
+            lengths = Math.min(movies.length, customQuantityMovies);
 
         Movie[] result = new Movie[lengths];
         for (int i = 0; i < lengths; i++) {
