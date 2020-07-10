@@ -5,8 +5,8 @@ import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
   private Movie[] movies = new Movie[0];
-  private int itemsToShow = DefaultQuantityMovies;
-  private static int DefaultQuantityMovies = 10;
+  private int itemsToShow = defaultQuantityMovies;
+  private static int defaultQuantityMovies = 10;
 
   private AfishaRepository repository;
 
@@ -16,7 +16,7 @@ public class AfishaManager {
       itemsToShow = customQuantityMovies;
     }
     else
-      itemsToShow = DefaultQuantityMovies;
+      itemsToShow = defaultQuantityMovies;
   }
 
   public AfishaManager(AfishaRepository repository) {

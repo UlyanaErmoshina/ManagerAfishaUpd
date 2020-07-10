@@ -31,10 +31,11 @@ class AfishaManagerTest {
         manager.add(second);
         manager.add(third);
 
+
     }
 
     @Test
-    void ShouldAdd() {
+    void shouldAdd() {
         Movie[] returned = new Movie[]{first, second, third, forth};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).save(forth);
@@ -47,9 +48,8 @@ class AfishaManagerTest {
 
     }
 
-
     @Test
-    void ShouldGetAll() {
+    void shouldGetAll() {
         Movie[] returned = new Movie[]{first, second, third};
         doReturn(returned).when(repository).findAll();
         Movie[] actual = manager.getAll();
@@ -59,7 +59,10 @@ class AfishaManagerTest {
         verify(repository).findAll();
 
     }
-}
+
+
+    }
+
 
 
 

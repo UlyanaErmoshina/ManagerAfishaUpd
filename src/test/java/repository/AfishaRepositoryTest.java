@@ -14,7 +14,7 @@ class AfishaRepositoryTest {
 
 
     @Test
-    void ShouldSave() {
+    void shouldSave() {
         repository.save(first);
         repository.save(second);
         repository.save(third);
@@ -28,7 +28,7 @@ class AfishaRepositoryTest {
     }
 
     @Test
-    void ShouldFindAll() {
+    void shouldFindAll() {
 
         repository.save(first);
         repository.save(second);
@@ -41,8 +41,7 @@ class AfishaRepositoryTest {
     }
 
     @Test
-
-    void ShouldFindById() {
+    void shouldFindById() {
 
         repository.save(first);
         repository.save(second);
@@ -59,8 +58,7 @@ class AfishaRepositoryTest {
     }
 
     @Test
-
-    void ShouldRemoveById(){
+    void shouldRemoveById(){
 
         repository.save(first);
         repository.save(second);
@@ -71,8 +69,7 @@ class AfishaRepositoryTest {
     }
 
     @Test
-
-    void ShouldRemoveAll(){
+    void shouldRemoveAll(){
 
         repository.removeAll();
 
