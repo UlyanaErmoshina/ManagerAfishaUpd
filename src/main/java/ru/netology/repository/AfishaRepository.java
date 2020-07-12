@@ -20,11 +20,10 @@ public class AfishaRepository {
     }
 
     public Movie findById(int id) {
-        Movie temp=null;
+        Movie temp = null;
         for (Movie item : items) {
             if (item.getId() == id) {
                 temp = item;
-
             }
         }
         return temp;
@@ -44,10 +43,10 @@ public class AfishaRepository {
     }
 
     public void removeAll() {
-    Movie[] tmp = new Movie[0];
-    items = tmp;
+        Movie[] tmp = new Movie[0];
+        items = tmp;
 
-            }
-        }
+    }
+}
 
 
