@@ -3,18 +3,15 @@ package ru.netology.manager;
 import ru.netology.domain.Movie;
 
 public class AfishaManager {
-
     private Movie[] movies = new Movie[0];
     private int customQuantityMovies;
-    private static int defaultQuantityMovies = 10;
+    private int defaultQuantityMovies = 10;
 
     public AfishaManager(int customQuantityMovies) {
-
         this.customQuantityMovies = customQuantityMovies;
     }
 
     public AfishaManager() {
-        customQuantityMovies = 0;
     }
 
     public void add(Movie item) {
@@ -54,7 +51,6 @@ public class AfishaManager {
                 index++;
             }
         }
-
         movies = tmp;
     }
 }
