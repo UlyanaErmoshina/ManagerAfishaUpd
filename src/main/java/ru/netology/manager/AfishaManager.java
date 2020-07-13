@@ -4,25 +4,16 @@ import ru.netology.domain.Movie;
 import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
-  private Movie[] movies = new Movie[0];
-  private int itemsToShow = defaultQuantityMovies;
-  private static int defaultQuantityMovies = 10;
-
+  private int defaultQuantityMovies = 10;
   private AfishaRepository repository;
 
-  public AfishaManager(int customQuantityMovies) {
-    if (customQuantityMovies > 0) {
-
-      itemsToShow = customQuantityMovies;
-    }
-    else
-      itemsToShow = defaultQuantityMovies;
+  public AfishaManager() {
   }
 
-  public AfishaManager(AfishaRepository repository) {
+  public AfishaManager(int defaultQuantityMovies, AfishaRepository repository) {
+    this.defaultQuantityMovies = defaultQuantityMovies;
     this.repository = repository;
   }
-
 
   public void add(Movie item) {
     repository.save(item);
@@ -30,11 +21,7 @@ public class AfishaManager {
 
   public Movie[] getAll() {
     Movie[] items = repository.findAll();
-    int lengths;
-
-    lengths = Math.min (items.length, itemsToShow);
-
-
+    int lengths = Math.min(items.length, defaultQuantityMovies);
     Movie[] result = new Movie[lengths];
     for (int i = 0; i < lengths; i++) {
       int index = items.length - i - 1;
@@ -42,5 +29,4 @@ public class AfishaManager {
     }
     return result;
   }
-
 }
