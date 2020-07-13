@@ -6,7 +6,7 @@ public class AfishaManager {
 
     private Movie[] movies = new Movie[0];
     private int customQuantityMovies;
-    private static int defaultQuantityMovies = 10;
+    private int defaultQuantityMovies = 10;
 
     public AfishaManager(int customQuantityMovies) {
 
